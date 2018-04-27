@@ -381,9 +381,25 @@ The following things set of rules should be applied when deciding on a CSS archi
 
 Its important to note that if using a framework, you should compartmentalize where and when it is used. This way, in the event of a complete overhaul of your CSS / HTML, refactoring is easy.
 
+A few conventions should be applied when doing this
+
+Don't
+
+- Rely on too many framework classes. Use as few as possible. E.g. Bootstrap's row, columns, and rows are sufficient for most things.
+
+Do 
+
+- Override CSS of bootstrap framework. E.g. `bg-background` you can override it with `background-color: yellow !important` under `_vendor.scss`. This makes customization much easier than modifying the original SCSS files. Later, you can refactor and identify what elements you used quickly by looking at `_vendor.scss`
+- Document which classes you use in `_vendor.scss`
+
 Next, there should be some sort of convention for determining how styles are created. These questions should be the following:
 
-- **Which HTML elements are going to be used and why?** - For instance,
-- **Joined selectors?**
+### Semantic CSS vs Semantic HTML
 
------------------------------------------------------------------
+There's always a tradeoff between how easy the HTML is to read VS how easy the CSS is to understand.
+
+BEM main disadvantage is creating excessively long classes and state modifiers
+
+Ideally, it is best to get both semantic CSS and semantic HTML
+
+- Semantic CSS → Use state modifiers
