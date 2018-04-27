@@ -402,4 +402,5 @@ BEM main disadvantage is creating excessively long classes and state modifiers
 
 Ideally, it is best to get both semantic CSS and semantic HTML
 
-- Semantic CSS → Use state modifiers
+- Semantic CSS → Use global state modifiers whenever possible following OOCSS
+- Semantic HTML → Use bootstraps opinionated framework for now
