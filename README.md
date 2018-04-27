@@ -310,3 +310,80 @@ If you must use an ID selector in the first place (and you should really try not
   - ![vn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**: [antoniofull/linee-guida-css](https://github.com/antoniofull/linee-guida-css)
 
 **[⬆ back to top](#table-of-contents)**
+
+
+------------------------------------------------------------------
+------------------------------------------------------------------
+
+# My notes on top of AirBnB's SASS - Styleguidelines
+
+There are many style guidelines out there. Airbnb's CSS styleguideline seems to hit most of the important marks. Its missing some important things
+
+Resources used:
+
+- https://vanseodesign.com/css/sass-directory-structures/
+- https://smacss.com/
+- https://github.com/stubbornella/oocss/wiki
+- http://getbem.com/introduction/
+
+### Folder Structure
+
+Folder structures depend on each project. For small - medium projects, it makes much more sense to have individual files over folders. The following layout is generally widely accepted:
+
+- _base.scss - HTML element modification and vendor changes (overwrites to Bootstrap)
+- _layout.scss - Macro layout
+- _modules.scss - micro layout
+
+Depending on project, a few other style guidelines standout
+
+- _page.scss - Specific page layouts
+- _shame.scss - Poorly made SCSS
+- _state.scss - State changes according to OOCSS principles
+- _vendor.scss - changes from framework
+
+Its also important to note that having these folder names are named so that if you read the files from top to bottom, they are sorted alphabetically by priority / specificity
+
+### SMACSS vs OOCSS vs BEM?
+
+Some similarities occur in all 3 frameworks and can be applied. The following conventions is what I think should be used in this exact order
+
+- SMASCSS folder structures (highlighted above)
+- OOCSS principles
+- BEM for everything else
+
+OOCSS suggests the following principles, which BEM adheres too
+
+- Seperation of Structure from Skin (OOCSS)
+- Seperation of content from containers
+
+BEM suggests using the following principles
+
+- Block
+- Element
+- Modifier
+
+The major difference between OOCSS and BEM is the naming implementation. They both suggest the same thing. 
+
+- Block-Element is seperation of contain from containers 
+- Modifier is seperation of structure
+
+OOCSS leaves the implementation up to you but BEM is opinionated
+
+### Applying these principles Strategies
+
+The following things set of rules should be applied when deciding on a CSS architecture. For instance, take an ecommerce project as an example running a bootstrap setup
+
+- **What are all the unique pages used?** (checkout, category landing page, product-grid page, product-landing page etc). These should be used a PUG inheritance style layout
+- **What are the reusable elements across pages?** - these go under `_layout.scss`.
+- **What about micro elements across pages?** - Micro elements may not be be needed if they can be adopted from a framework like bootstrap. If this is the case, changes should go under `_vendor.scss`.
+
+### What if you use a framework like bootstrap?
+
+Its important to note that if using a framework, you should compartmentalize where and when it is used. This way, in the event of a complete overhaul of your CSS / HTML, refactoring is easy.
+
+Next, there should be some sort of convention for determining how styles are created. These questions should be the following:
+
+- **Which HTML elements are going to be used and why?** - For instance,
+- **Joined selectors?**
+
+-----------------------------------------------------------------
